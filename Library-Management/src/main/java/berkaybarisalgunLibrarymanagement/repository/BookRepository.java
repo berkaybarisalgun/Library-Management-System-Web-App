@@ -3,7 +3,7 @@ package berkaybarisalgunLibrarymanagement.repository;
 import berkaybarisalgunLibrarymanagement.entity.Book;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface BookRepository extends JpaRepository<Book,int> {
+public interface BookRepository extends JpaRepository<Book,Integer> {
 
-    findByName(String name);
+    void findBytitle(String title);
 }

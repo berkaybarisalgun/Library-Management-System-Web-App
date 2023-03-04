@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+>
+<div th:replace="admin/header::header" ></div>
+
+<body>
+<div th:replace="admin/header::navbar"></div>
+
+
+<div class="container">
+    <div class="row">
+        <h1>List Books</h1>
+    </div>
+    <table class="table table-striped table-hover table-bordered">
+        <thead class="table-dark">
+        <th style="width:5%">Id</th>
+        <th style="width:17%">Title</th>
+        <th style="width:17%">Author</th>
+        <th style="width:5%">Page Count</th>
+        <th style="width:17%">Language</th>
+        <th style="width:17%">Genre</th>
+        <th style="width:5%">Location On Shelf</th>
+        <th style="width:5%">Stock</th>
+        <th style="width:12%">Actions</th>
+
+
+        </thead>
+        <tbody>
+        <tr th:each="book:${books}">
+            <td tH:text="${book.id}">Id</td>
+            <td tH:text="${book.title}">Title</td>
+            <td tH:text="${book.author}">Author</td>
+            <td tH:text="${book.pageCount}">Page Count</td>
+            <td tH:text="${book.language}">Language</td>
+            <td tH:text="${book.genre}">Genre</td>
+            <td tH:text="${book.locationOnShelf}">Location On Shelf</td>
+            <td tH:text="${book.stock}">Stock</td>
+            <td <a> <button type="button" class="btn btn-outline-primary">Edit</button> </a>
+            <button type="button" class="btn btn-outline-danger">Delete</button>  </td>
+
+
+
+
+        </tr>
+
+
+        </tbody>
+
+    </table>
+    </div>
+    <br /><br />
+
+<div <!-- th:replace="admin/footer :: footer"></div> -->
+</body>
+</html>
