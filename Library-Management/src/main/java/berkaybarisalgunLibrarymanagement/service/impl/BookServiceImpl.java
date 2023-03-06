@@ -27,4 +27,22 @@ public class BookServiceImpl implements BookService {
         return books.stream().map(BookMapper::mapToBookDto).collect(Collectors.toList());
 
     }
+
+    @Override
+    public void deleteBookById(int id) {
+        bookRepository.deleteById(id);
+    }
+
+    @Override
+    public void updateBook(Book book) {
+        bookRepository.save(book);
+    }
+
+    @Override
+    public Book getBookById(int id) {
+       return bookRepository.findById(id).get();
+
+    }
+
+
 }

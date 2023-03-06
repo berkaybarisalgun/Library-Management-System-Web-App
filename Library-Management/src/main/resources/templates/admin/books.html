@@ -23,8 +23,6 @@
         <th style="width:5%">Location On Shelf</th>
         <th style="width:5%">Stock</th>
         <th style="width:12%">Actions</th>
-
-
         </thead>
         <tbody>
         <tr th:each="book:${books}">
@@ -36,19 +34,20 @@
             <td tH:text="${book.genre}">Genre</td>
             <td tH:text="${book.locationOnShelf}">Location On Shelf</td>
             <td tH:text="${book.stock}">Stock</td>
-            <td <a> <button type="button" class="btn btn-outline-primary">Edit</button> </a>
-            <button type="button" class="btn btn-outline-danger">Delete</button>  </td>
-
-
-
-
+            <td>
+                <form th:action="@{/admin/delete}" method="POST" style="display: inline;">
+                    <input type="hidden" name="bookId" th:value="${book.id}" />
+                    <button type="submit" class="btn btn-outline-danger">Delete</button>
+                </form>
+                <a th:href="@{/admin/edit/{id}(id=${book.id})}">
+                    <button type="button" class="btn btn-outline-primary">Edit</button>
+                </a>
+            </td>
         </tr>
-
-
         </tbody>
-
     </table>
-    </div>
+
+</div>
     <br /><br />
 
 <div <!-- th:replace="admin/footer :: footer"></div> -->
