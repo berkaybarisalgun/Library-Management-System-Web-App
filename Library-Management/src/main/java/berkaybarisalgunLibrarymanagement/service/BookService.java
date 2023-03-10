@@ -2,6 +2,7 @@ package berkaybarisalgunLibrarymanagement.service;
 
 import berkaybarisalgunLibrarymanagement.dto.BookDto;
 import berkaybarisalgunLibrarymanagement.entity.Book;
+import berkaybarisalgunLibrarymanagement.entity.UserInfo;
 
 import java.util.List;
 
@@ -12,4 +13,6 @@ public interface BookService {
     void updateBook(Book book);
 
     Book getBookById(int id);
+
+    String addUser(UserInfo userInfo);
 }

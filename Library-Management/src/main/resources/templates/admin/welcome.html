@@ -2,11 +2,11 @@
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org"
 >
-<head>
-    <meta charset="UTF-8">
-    <title>Welcome </title>
-</head>
+<div th:replace="admin/header::header" ></div>
+
 <body>
-    <h1>Welcome</h1>
+<div th:replace="admin/header::navbar"></div>
+    <h1>Welcome ADMIN <span th:text="${name}"></span></h1>
+
 </body>
 </html>
