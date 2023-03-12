@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -34,7 +35,7 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public List<BookDto> findAllBooks() {
-        List<Book> books=bookRepository.findAll();
+        List<Book> books = bookRepository.findAll();
         return books.stream().map(BookMapper::mapToBookDto).collect(Collectors.toList());
 
     }
@@ -51,14 +52,28 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public Book getBookById(int id) {
-       return bookRepository.findById(id).get();
+        return bookRepository.findById(id).get();
 
     }
 
-    public String addUser(UserInfo userInfo){
+    public String addUser(UserInfo userInfo) {
         userInfo.setPassword(passwordEncoder.encode(userInfo.getPassword()));
         repository.save(userInfo);
         return "user added to system";
+    }
+
+    @Override
+    public List<BookDto> searchBooks(String query) {
+        List<Book> allBooks = bookRepository.findAll();
+        List<Book> matchedBooks = new ArrayList<>();
+
+        for (Book book : allBooks) {
+            if (book.getTitle().toLowerCase().contains(query.toLowerCase())) {
+                matchedBooks.add(book);
+            }
+        }
+        return matchedBooks.stream().map(BookMapper::mapToBookDto).collect(Collectors.toList());
+
     }
 
 

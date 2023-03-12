@@ -22,12 +22,11 @@ public class UserController {
 
     @GetMapping("/user/books")
     @PreAuthorize("hasAuthority('ROLE_USER')")
-    public String books(Model model){
-        List<BookDto> books=bookService.findAllBooks();
-        model.addAttribute("books",books);
+    public String books(Model model) {
+        List<BookDto> books = bookService.findAllBooks();
+        model.addAttribute("books", books);
         return "/user/books";
     }
-
 
 
 }

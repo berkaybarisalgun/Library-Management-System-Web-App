@@ -22,13 +22,14 @@ public class Book {
     @Column(nullable = false)
     private String author;
     @Column(nullable = false)
-    private int pageCount;
+    private int page_count;
     @Column(nullable = false)
     private String language;
     @Column
     private String genre;
-    @Column(nullable = false)
-    private String locationOnShelf;
+    @Column(nullable = false, columnDefinition = "varchar(255) default 'unspecified'")
+    private String location_on_shelf;
+
     @Column(nullable = false)
     private int stock; // "stock" area
 

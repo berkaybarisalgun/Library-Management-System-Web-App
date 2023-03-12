@@ -22,7 +22,7 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
     @Bean
     //authentication
-    public UserDetailsService userDetailsService(){
+    public UserDetailsService userDetailsService() {
 //        UserDetails admin= User.withUsername("admin")
 //                .password(encoder.encode("admin"))
 //                .roles("ADMIN")
@@ -38,10 +38,10 @@ public class SecurityConfig {
     }
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.csrf().disable()
                 .authorizeHttpRequests()
-                .requestMatchers("/","/admin/new","/new").permitAll()
+                .requestMatchers("/", "/admin/new", "/new", "/search").permitAll()
                 .and()
                 .authorizeHttpRequests().requestMatchers(("/admin/**"))//look for an authentication everything that starts with it
                 .authenticated()
@@ -54,19 +54,17 @@ public class SecurityConfig {
     }
 
     @Bean
-    public PasswordEncoder passwordEncoder(){
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
     @Bean
-    public AuthenticationProvider authenticationProvider(){
-        DaoAuthenticationProvider authenticationProvider=new DaoAuthenticationProvider();
+    public AuthenticationProvider authenticationProvider() {
+        DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
         authenticationProvider.setUserDetailsService(userDetailsService());
         authenticationProvider.setPasswordEncoder(passwordEncoder());
         return authenticationProvider;
     }
-
-
 
 
 }

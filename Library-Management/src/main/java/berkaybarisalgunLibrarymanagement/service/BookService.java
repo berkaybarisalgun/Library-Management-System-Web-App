@@ -8,6 +8,7 @@ import java.util.List;
 
 public interface BookService {
     List<BookDto> findAllBooks();
+
     void deleteBookById(int id);
 
     void updateBook(Book book);
@@ -15,4 +16,6 @@ public interface BookService {
     Book getBookById(int id);
 
     String addUser(UserInfo userInfo);
+
+    List<BookDto> searchBooks(String query);
 }

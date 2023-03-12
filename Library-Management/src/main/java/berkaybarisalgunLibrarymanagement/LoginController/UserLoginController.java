@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class UserLoginController {
 
     @GetMapping("/user/welcome")
-    public String gotoLoginPageAdmin(Model model){
-        Authentication authentication= SecurityContextHolder.getContext().getAuthentication();
-        String username=authentication.getName();
-        model.addAttribute("name",username);
+    public String gotoLoginPageAdmin(Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+        model.addAttribute("name", username);
         return "/user/welcome";
     }
 }

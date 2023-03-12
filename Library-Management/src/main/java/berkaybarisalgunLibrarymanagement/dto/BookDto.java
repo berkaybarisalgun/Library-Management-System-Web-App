@@ -18,9 +18,9 @@ public class BookDto {
     private int id;
     private String title;
     private String author;
-    private int pageCount;
+    private int page_count;
     private String language;
     private String genre;
-    private String locationOnShelf;
+    private String location_on_shelf;
     private int stock; // "stock" area
 }

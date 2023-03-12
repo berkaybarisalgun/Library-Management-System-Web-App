@@ -10,7 +10,19 @@
 
 <div class="container">
     <div class="row">
-        <h1>List Books</h1>
+        <div class="col">
+            <h1>List Books</h1>
+        </div>
+        <div class="col-auto">
+            <form th:action="@{/search}" method="GET" style="display: inline;" class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search books..." aria-label="Search" name="query">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
+
+
+
+
     </div>
     <table class="table table-striped table-hover table-bordered">
         <thead class="table-dark">
@@ -29,10 +41,10 @@
             <td tH:text="${book.id}">Id</td>
             <td tH:text="${book.title}">Title</td>
             <td tH:text="${book.author}">Author</td>
-            <td tH:text="${book.pageCount}">Page Count</td>
+            <td tH:text="${book.page_count}">Page Count</td>
             <td tH:text="${book.language}">Language</td>
             <td tH:text="${book.genre}">Genre</td>
-            <td tH:text="${book.locationOnShelf}">Location On Shelf</td>
+            <td tH:text="${book.location_on_shelf}">Location On Shelf</td>
             <td tH:text="${book.stock}">Stock</td>
             <td>
                 <form th:action="@{/admin/delete}" method="POST" style="display: inline;">
